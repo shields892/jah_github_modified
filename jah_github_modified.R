@@ -612,7 +612,7 @@ library(writexl)
 #A few function modifications...
 {
   ggplot <- function(...) ggplot2::ggplot(...) + scale_color_hue(h = c(0,270),l=40) + scale_fill_hue(h = c(0,270),l=40)
-  geom_lm <- function(...,method=lm,se=F){ggplot2::geom_smooth(...,method=method,se=se)}
+  geom_lm <- function(...,formula=y~x,method=lm,se=F){ggplot2::geom_smooth(...,formula=formula,method=method,se=se)}
   ggsave = function(
    filename, plot = ggplot2::last_plot(), device = NULL,
    path = NULL, scale = 1, width = NA, height = NA,
