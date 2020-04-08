@@ -575,8 +575,8 @@ library(truncnorm)
                   legend.text.align = 0, 
                   legend.title = element_text(hjust=0,inherit.blank = T),
                   legend.title.align = 0.5, # alignment of legend title (number from 0 (left) to 1 (right))
-                  legend.position = "top", # the position of legends ("none", "left", "right", "bottom", "top", or two-element numeric vector) 
-                  legend.direction = "horizontal", # layout of items in legends ("horizontal" or "vertical")
+                  legend.position = "right", # the position of legends ("none", "left", "right", "bottom", "top", or two-element numeric vector) 
+                  legend.direction = "vertical", # layout of items in legends ("horizontal" or "vertical")
                   legend.justification = "center", #anchor point for positioning legend inside plot, default is "center"
                   legend.box = "horizontal", #arrangment of multiple legends ("horizontal" or "vertical")
                   legend.box.just = "left", # justification of each legend within the overall bounding box, when there are multiple legends ("top", "bottom", "left", or "right")
