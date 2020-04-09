@@ -615,25 +615,25 @@ library(truncnorm)
 {
   ggplot <- function(...) ggplot2::ggplot(...) + scale_color_hue(h = c(0,270),l=40) + scale_fill_hue(h = c(0,270),l=40)
   geom_lm <- function(...,formula=y~x,method=lm,se=F){ggplot2::geom_smooth(...,formula=formula,method=method,se=se)}
-  ggsave = function(
-   filename, plot = ggplot2::last_plot(), device = NULL,
-   path = NULL, scale = 1, width = NA, height = NA,
-   units = c("mm"), dpi = 600, limitsize = TRUE, border=50, ...){
-   
-   if(is.na(width)){width = 2*height}
-   if(is.na(height)){height = 2*width}
-   
-   cowplot::ggsave2(filename=filename,
-                    plot=plot,
-                    device=device,
-                    path=path,
-                    scale=scale,
-                    width=width,
-                    height=height,
-                    units=units,
-                    dpi=dpi,
-                    limitsize=limitsize,
-                    ...)
-   system(paste0("magick convert ",filename," -trim -bordercolor white -border ",border," ",filename))
-   }
+  ggsave <- function(
+    filename, plot = ggplot2::last_plot(), device = NULL,
+    path = NULL, scale = 1, width = NA, height = NA,
+    units = c("mm"), dpi = 600, limitsize = TRUE, border=50, ...){
+    
+    if(is.na(width)){width = 2*height}
+    if(is.na(height)){height = 2*width}
+    
+    cowplot::ggsave2(filename=filename,
+                     plot=plot,
+                     device=device,
+                     path=path,
+                     scale=scale,
+                     width=width,
+                     height=height,
+                     units=units,
+                     dpi=dpi,
+                     limitsize=limitsize,
+                     ...)
+    system(paste0("magick convert \"",filename,"\" -trim -bordercolor white -border ",border," \"",filename,"\""))
+  }
 }
