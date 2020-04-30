@@ -149,7 +149,8 @@ library(truncnorm)
     colnames(random) <- c("x","y","rep")
     if(method=="ols"){dist <- random %>% group_by(rep) %>% summarize(slope=cov(x,y)/var(x),intercept=mean(y)-slope*mean(x),r2=cor(x,y)^2) %>% .[,-1]}
     if(method=="rma"){dist <- random %>% group_by(rep) %>% summarize(slope=sign(cov(x,y))*sd(y)/sd(x),intercept=mean(y)-slope*mean(x),r2=cor(x,y)^2) %>% .[,-1]}
-    dist[n,] <- c(slope.observed,int.observed,r2.observed)
+    dist <- rbind(dist,c(slope.observed,int.observed,r2.observed))
+    # dist[n,] <- c(slope.observed,int.observed,r2.observed) # Kept getting an error about the incorrect number of rows being assigned so I switched it out with the line above
     slope.95ci <- c(sort(dist$slope)[(n*0.025)],sort(dist$slope)[(n*0.975)])
     sig.slope <- ifelse((sign(slope.95ci[1])==sign(slope.95ci[2]))==T,"< 0.05","> 0.05")
     int.95ci <- c(sort(dist$intercept)[(n*0.025)],sort(dist$intercept)[(n*0.975)])
